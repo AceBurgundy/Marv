@@ -1,0 +1,53 @@
+.authentication--container {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
+}
+
+.authentication--form {
+    gap: 2rem;
+}
+
+.authentication--form__header {
+    font-size: var(--font-size-xl);
+}
+
+.authentication--form > a {
+    text-decoration: none;
+    align-self: center;
+}
+
+svg {
+    width: 1rem;
+}
+
+.eye.hidden,
+.eye-slash.hidden {
+    display: none;
+}
+
+.authentication--form > div:nth-child(4) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 10px;
+    font-family: "Clash Display";
+}
+
+  /* xl */
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+
+    .authentication--form {
+        width: 30%;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (orientation: portrait) {
+    .authentication--form {
+        width: 100%;
+    }
+  }

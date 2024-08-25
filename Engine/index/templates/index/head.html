@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vertex Insight</title>
+
+    <script src="{{ url_for('index.static', filename='head.js') }}" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.3/socket.io.js" integrity="sha512-jDUVpk2awjMnyrpY2xZguylQVRDeS9kRBImn0M3NJaZzowzUpKr6i62ynwPG0vNS1+NsTk4ji+iznbc5m0ZCKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='root.css') }}">
+
+    {% block script -%}{%- endblock script %}
+    {% block component_script -%}{%- endblock component_script %}
+
+    {% block style -%}{%- endblock style %}
+    {% block component_style -%}{% endblock component_style %}
+</head>
+
+<body>
+    <script>0</script>
+    <ul id="flashes"></ul>
+    {% block main -%}{%- endblock %}
+    {% block login -%}{%- endblock login %}
+    {% block register -%}{%- endblock register %}
+</body>

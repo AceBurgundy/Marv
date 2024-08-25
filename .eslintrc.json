@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "no-param-reassign": ["error", "never"],
+    "arrow-parens": ["error", "as-needed"], // No parentheses for a single argument in arrow functions
+    "comma-dangle": ["error", "never"],     // No trailing commas in arrays, objects, etc.
+    "import/export": "error",               // Ensure import/export syntax is allowed
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always",
+        "jsx": "always",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  }
+}

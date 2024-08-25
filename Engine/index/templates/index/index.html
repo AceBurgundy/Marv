@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block component_style -%}
+{% endblock component_style %}
+
+{% block component_script -%}
+<script src="{{ url_for( 'index.static' , filename='index.js') }}" type="module"></script>
+{%- endblock component_script %}
+
+<!-- {# main #} -->
+{% block main -%}
+<div id="title">Vertex Insight</div>
+<section id="elections">
+    {% for election in elections -%}
+        <a href="{{ url_for('election.candidates', title=election.title ) }}">
+            <h2>{{ election.title }}</h2>
+            <p>
+                {{ election.start_time }}: <span>{{ election.datetime_readable(election.start_time) }}</span>
+                {{ election.end_time }}: <span>{{ election.datetime_readable(election.end_time) }}</span>
+            </p>
+        </a>
+    {%- endfor %}
+</section>
+{%- endblock main %}

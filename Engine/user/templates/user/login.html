@@ -1,0 +1,47 @@
+{%- block scripts %}
+<script src="{{ url_for( 'app_admin.static' , filename='login.js')  }}" type="module" defer></script>
+{% endblock scripts -%}
+
+{% extends "head.html" %}
+
+{%- block style %}
+<link rel="stylesheet" href="{{ url_for( 'app_admin.static' , filename='user-styles.css')}}">
+{% endblock style -%}
+
+{% block login -%}
+<div class="container authentication--container">
+  <form id="login-form" class="authentication--form" data-route="{{ url_for('app_admin.login') }}">
+
+    <h1 class="authentication--form__header">Welcome</h1>
+
+    {{ form.csrf_token }}
+
+    <div class="input-fields">
+      <div class="input-fields__item">
+        <i class="fa fa-user"></i>
+        {{ form.login_email(class="email", placeholder="Email") }}
+      </div>
+
+      <div class="input-fields__item">
+        <i class="fa fa-lock"></i>
+        {{ form.login_password(placeholder="Password") }}
+        <div class="icon-container" id="password-icon-container">
+          <i id="eye" class="eye fa-regular fa-eye hidden"></i>
+          <i id="eye-slash" class="eye-slash fa-regular fa-eye-slash"></i>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      Login
+      <button class="icon-button" id="login-button">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <a href="{{ url_for('app_admin.register') }}">
+      Create An Account?
+    </a>
+  </form>
+</div>
+{%- endblock login %}

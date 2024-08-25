@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Rubik Medium";
+    src: url(./fonts/Rubik-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url(./fonts/ClashDisplay-Variable.ttf);
+}
+
+@font-face {
+    font-family: "Rubik Regular";
+    src: url(./fonts/Rubik-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Rubik Light";
+    src: url(./fonts/Rubik-Light.ttf);
+}
+
+@font-face {
+    font-family: "Roboto Regular";
+    src: url(./fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Roboto Light";
+    src: url(./fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: "Poppins Light";
+    src: url(./fonts/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: "Poppins Regular";
+    src: url(./fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Poppins Medium";
+    src: url(./fonts/Poppins-Medium.ttf);
+}
