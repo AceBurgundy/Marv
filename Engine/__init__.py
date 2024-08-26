@@ -1,7 +1,8 @@
+from Engine.admin_views.setup import setup_admin_views
 from flask_admin import Admin, AdminIndexView, expose
-from flask import Flask, redirect, url_for, request
 from flask_login import LoginManager, current_user
 from flask_admin.contrib.sqla import ModelView
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 from Engine.config import Config
@@ -51,11 +52,7 @@ db: SQLAlchemy = SQLAlchemy()
 main_admin: Admin = Admin(index_view=SecureAdminIndexView())
 socketio: SocketIO = SocketIO()
 
-# Add an admin view for all models in the database
-from Engine.models import model_collection
-
-for model in model_collection:
-    main_admin.add_view(ModelView(model, db.session))
+setup_admin_views(main_admin, db)
 
 def create_app(config_class=Config) -> Flask:
     """
