@@ -90,7 +90,23 @@ class Candidate(BaseModel):
     election_id = Column(Integer, ForeignKey('elections.id'), nullable=False)
 
     position = relationship('Position')
-    election = relationship('Election')
+
+    def __init__(self, name, image_filename=None, id_number=None, position_id=None, election_id=None):
+        """
+        Initialize a new Candidate instance.
+
+        Attributes:
+            name: The name of the candidate.
+            image_filename: The URL of the candidate's image (optional).
+            id_number: An optional identifier for the candidate (optional).
+            position_id: The foreign key referencing the Position.
+            election_id: The foreign key referencing the Election.
+        """
+        self.name = name
+        self.image_filename = image_filename
+        self.id_number = id_number
+        self.position_id = position_id
+        self.election_id = election_id
 
     def votes(self) -> int:
         """
@@ -129,10 +145,23 @@ class Election(BaseModel):
     __tablename__ = 'elections'
 
     title = Column(String(255), nullable=False, unique=True)
-    start_time = Column(SQLAlchemyDateTime, nullable=False)
-    end_time = Column(SQLAlchemyDateTime, nullable=False)
+    start_date_and_time = Column(SQLAlchemyDateTime, nullable=False)
+    end_date_and_time = Column(SQLAlchemyDateTime, nullable=False)
 
     candidates = relationship('Candidate', foreign_keys='Candidate.election_id', order_by='desc(Candidate.created_at)')
+
+    def __init__(self, title, start_date_and_time, end_date_and_time):
+        """
+        Initialize a new Election instance.
+
+        Attributes:
+            title: The title for the election
+            start_date_and_time: The start date and time of the election
+            end_date_and_time: The end date and time of the election
+        """
+        self.title = title
+        self.start_date_and_time = start_date_and_time
+        self.end_date_and_time = end_date_and_time
 
 class Organization(BaseModel):
     """
@@ -145,6 +174,15 @@ class Organization(BaseModel):
 
     name = Column(String(255), nullable=False)
 
+    def __init__(self, name):
+        """
+        Initialize a new Organization instance.
+
+        Attributes:
+            name: The name for the organization
+        """
+        self.name = name
+
 class Position(BaseModel):
     """
     Represents a position within an election (e.g., "President").
@@ -155,6 +193,15 @@ class Position(BaseModel):
     __tablename__ = 'positions'
 
     name = Column(String(255), nullable=False, unique=True)
+
+    def __init__(self, name):
+        """
+        Initialize a new Position instance.
+
+        Attributes:
+            name: The name for the position
+        """
+        self.name = name
 
 class Voter(BaseModel):
     """
@@ -214,11 +261,9 @@ class Vote(BaseModel):
 
 model_collection: List[Type[BaseModel]] = [
     User,
-    Candidate,
     Course,
     Election,
     Organization,
     Position,
-    Voter,
-    Vote
+    Candidate
 ]
