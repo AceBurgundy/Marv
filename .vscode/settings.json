@@ -1,14 +1,20 @@
 {
   "files.exclude": {
-    "env": true,
     "requirements.txt": true,
     "README.md": true,
     "LICENSE.md": true,
-    ".env": true,
     "create_database.py": true,
     ".mypy_cache": true,
     ".vscode": true,
     "__pycache__": true,
-    "Engine/__pycache__": true
+    "Engine/__pycache__": true,
+    "node_modules": true,
+    ".eslintrc.json": true,
+    ".gitignore": true,
+    "mypy.ini": true,
+    "package.json": true,
+    "package-lock.json": true,
+    ".env": false,
+    "env": true
   }
 }

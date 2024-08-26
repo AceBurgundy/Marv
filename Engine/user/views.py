@@ -6,6 +6,7 @@ from flask_login import login_user, logout_user
 from Engine.models import User
 from typing import Optional
 from Engine import db
+import traceback
 
 app_admin: Blueprint = Blueprint('app_admin', __name__, template_folder='templates/user', static_folder='static/user')
 
@@ -45,7 +46,7 @@ def login() -> Response:
         login_user(user)
         return jsonify({
             'status': 'success',
-            'url': url_for('index._index')
+            'url': url_for('admin.index')
         })
 
     return jsonify({
@@ -62,7 +63,7 @@ def logout() -> RedirectResponse:
         Redirects to the login_form route
     """
     logout_user()
-    return redirect(url_for('user.login_form'))
+    return redirect(url_for('app_admin.login_form'))
 
 @app_admin.get("/admin/register")
 def register_form() -> str:
@@ -109,10 +110,13 @@ def register() -> RedirectResponse:
 
         return jsonify({
             'status': 'success',
-            'url': url_for('user.login_form')
+            'url': url_for('app_admin.login_form')
         })
 
-    except:
+    except Exception as error:
+        print(f"{error}")
+        traceback.print_exc()
+
         return jsonify({
             'status': 'error',
             'message': ["Error in registering user"]

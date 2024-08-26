@@ -1,0 +1,27 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+
+<form method="POST">
+    {{ form.csrf_token }}
+
+    <div>
+        {{ form.title.label }} {{ form.title }}
+    </div>
+    <div>
+        {{ form.start_date_and_time.label }} {{ form.start_date_and_time(type="datetime-local") }}
+    </div>
+    <div>
+        {{ form.end_date_and_time.label }} {{ form.end_date_and_time(type="datetime-local") }}
+    </div>
+
+    {% for candidate_form in form.candidates %}
+        <div>
+            {{ candidate_form }}
+        </div>
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

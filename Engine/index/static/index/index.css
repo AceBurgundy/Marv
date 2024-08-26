@@ -1,0 +1,8 @@
+#app-bar > h1 {
+  font-size: var(--font-size-xxl);
+  word-spacing: 0.5rem;
+}
+
+#app-bar {
+  padding: 2rem;
+}

@@ -9,16 +9,20 @@
 
 <!-- {# main #} -->
 {% block main -%}
-<div id="title">Vertex Insight</div>
-<section id="elections">
-    {% for election in elections -%}
-        <a href="{{ url_for('election.candidates', title=election.title ) }}">
-            <h2>{{ election.title }}</h2>
-            <p>
-                {{ election.start_time }}: <span>{{ election.datetime_readable(election.start_time) }}</span>
-                {{ election.end_time }}: <span>{{ election.datetime_readable(election.end_time) }}</span>
-            </p>
-        </a>
-    {%- endfor %}
+<section class="container">
+    <div id="app-bar">
+        <h1>Welcome to Marv</h1>
+    </div>
+    <section class="container" id="elections">
+        {% for election in elections -%}
+            <a href="{{ url_for('election.candidates', title=election.title ) }}">
+                <h2>{{ election.title }}</h2>
+                <p>
+                    {{ election.start_time }}: <span>{{ election.datetime_readable(election.start_time) }}</span>
+                    {{ election.end_time }}: <span>{{ election.datetime_readable(election.end_time) }}</span>
+                </p>
+            </a>
+        {%- endfor %}
+    </section>
 </section>
 {%- endblock main %}

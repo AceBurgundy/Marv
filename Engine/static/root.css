@@ -12,6 +12,7 @@
   --font-size-m: clamp(1rem, 0.875rem + 0.5vw, 1.125rem);   /* Medium font size */
   --font-size-l: clamp(1.25rem, 1rem + 0.75vw, 1.5rem);     /* Large font size */
   --font-size-xl: clamp(1.5rem, 1.25rem + 1vw, 2.5rem);       /* Extra Large font size */
+  --font-size-xxl: clamp(3.5rem, 8vw + 1rem, 8rem);
 }
 
 :root[data-theme="dark"] {
